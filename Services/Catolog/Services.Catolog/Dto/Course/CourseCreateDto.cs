@@ -1,6 +1,6 @@
 ﻿namespace Services.Catolog.Dto.Course
 {
-    public class CourseCreateDto
+    internal class CourseCreateDto
     {
         public string CategoryId { get; set; }
 

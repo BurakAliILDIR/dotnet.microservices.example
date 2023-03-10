@@ -1,6 +1,6 @@
 ﻿namespace Services.Catolog.Dto
 {
-    public class FeatureDto
+    internal class FeatureDto
     {
     }
 }

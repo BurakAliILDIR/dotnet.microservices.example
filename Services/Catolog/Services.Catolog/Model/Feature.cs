@@ -3,7 +3,7 @@ using MongoDB.Bson;
 
 namespace Services.Catolog.Model
 {
-    public class Feature
+    internal class Feature
     {
         [BsonRepresentation(BsonType.ObjectId)]
         public string CourseId { get; set; }

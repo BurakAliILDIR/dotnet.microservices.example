@@ -4,7 +4,7 @@ using Services.Catolog.Model;
 
 namespace Services.Catolog.Dto.Course
 {
-    public class CourseDto
+    internal class CourseDto
     {
         public string Id { get; set; }
 
