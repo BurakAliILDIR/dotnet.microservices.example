@@ -7,7 +7,7 @@ using Shared.Util;
 
 namespace Services.Catolog.Service
 {
-    internal class CourseService : ICourseService
+    public class CourseService : ICourseService
     {
         private readonly IMongoCollection<Course> _courseCollection;
         private readonly IMongoCollection<Category> _categoryCollection;

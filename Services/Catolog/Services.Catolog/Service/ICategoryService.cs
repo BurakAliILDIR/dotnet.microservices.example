@@ -1,14 +1,15 @@
-﻿using Services.Catolog.Model;
+﻿using Services.Catolog.Dto;
+using Services.Catolog.Model;
 using Shared.Util;
 
 namespace Services.Catolog.Service
 {
     public interface ICategoryService
     {
-        public Task<Response> GetCategoryAsync(string categoryName);
+        public Task<Response> GetCategoryAsync();
 
         public Task<Response> FindByIdAsync(string id);
 
-        public Task<Response> CreateCategoryAsync(Category category);
+        public Task<Response> CreateCategoryAsync(CategoryDto categoryDto);
     }
 }

@@ -5,9 +5,9 @@ using Services.Catolog.Model;
 
 namespace Services.Catolog.Mapping
 {
-    internal class GeneralMapping : Profile
+    public class GeneralMapping : Profile
     {
-        internal GeneralMapping()
+        public GeneralMapping()
         {
             CreateMap<Course, CourseDto>().ReverseMap();
             CreateMap<Category, CategoryDto>().ReverseMap();

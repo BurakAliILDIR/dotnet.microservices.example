@@ -1,6 +1,6 @@
 ﻿namespace Services.Catolog.Dto
 {
-    internal class CategoryDto
+    public class CategoryDto
     {
 
     }

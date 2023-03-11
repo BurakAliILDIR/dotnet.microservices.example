@@ -7,13 +7,13 @@ using Shared.Util;
 
 namespace Services.Catolog.Service
 {
-    internal class CategoryService : ICategoryService
+    public class CategoryService : ICategoryService
     {
         private readonly IMongoCollection<Category> _categoryCollection;
 
         private readonly IMapper _mapper;
 
-        public CategoryService(IMapper mapper, DatabaseSetting databaseSetting)
+        public CategoryService(IMapper mapper, IDatabaseSetting databaseSetting)
         {
             _mapper = mapper;
 
@@ -24,7 +24,7 @@ namespace Services.Catolog.Service
             _categoryCollection = database.GetCollection<Category>(databaseSetting.CategoryCollectionName);
         }
 
-        public async Task<Response> GetCategoryAsync(string categoryName)
+        public async Task<Response> GetCategoryAsync()
         {
             var categories = await _categoryCollection.Find(category => true).ToListAsync();
 
@@ -45,11 +45,13 @@ namespace Services.Catolog.Service
             return Response.Return(Response.ResponseStatusEnum.Success, "Kategori başarıyla getirildi.", categoryDto);
         }
 
-        public async Task<Response> CreateCategoryAsync(Category category)
+        public async Task<Response> CreateCategoryAsync(CategoryDto categoryDto)
         {
-            await _categoryCollection.InsertOneAsync(category);
+            Category newCategory = _mapper.Map<Category>(categoryDto);
 
-            CategoryDto categoryDto = _mapper.Map<CategoryDto>(category);
+            await _categoryCollection.InsertOneAsync(newCategory);
+
+            categoryDto = _mapper.Map<CategoryDto>(newCategory);
 
             return Response.Return(Response.ResponseStatusEnum.Success, "Kategori başarıyla eklendi.", categoryDto);
         }

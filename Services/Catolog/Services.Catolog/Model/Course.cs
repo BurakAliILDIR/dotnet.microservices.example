@@ -3,7 +3,7 @@ using MongoDB.Bson;
 
 namespace Services.Catolog.Model
 {
-    internal class Course
+    public class Course
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

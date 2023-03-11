@@ -24,13 +24,14 @@ namespace Shared.Util
 
         [JsonIgnore] public int StatusCode { get; private set; }
 
-        public static Response Return(ResponseStatusEnum statusEnum, string message, object data)
+        public static Response Return(ResponseStatusEnum statusEnum, string message, object data, int statusCode = 200)
         {
             return new Response()
             {
                 StatusEnum = statusEnum,
                 Message = message,
                 Data = data,
+                StatusCode = statusCode
             };
         }
     }

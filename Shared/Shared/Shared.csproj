@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <Folder Include="Dto\" />
+    <!-- TODO : Class libraryi Asp.Net projesini customize etmek için include edildi. -->
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
 </Project>

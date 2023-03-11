@@ -1,6 +1,6 @@
 ﻿namespace Services.Catolog.Setting
 {
-    internal class DatabaseSetting : IDatabaseSetting
+    public class DatabaseSetting : IDatabaseSetting
     {
         public string CourseCollectionName { get; set; }
         public string CategoryCollectionName { get; set; }

@@ -3,7 +3,7 @@ using Shared.Util;
 
 namespace Services.Catolog.Service
 {
-    internal interface ICourseService
+    public interface ICourseService
     {
         Task<Response> GetCourseAsync();
 

@@ -1,6 +1,6 @@
 ﻿namespace Services.Catolog.Dto.Course
 {
-    internal class CourseUpdateDto
+    public class CourseUpdateDto
     {
         public string Id { get; set; }
 
