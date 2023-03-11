@@ -1,5 +1,6 @@
 using AutoMapper;
 using Microsoft.Extensions.Options;
+using Services.Catolog.Mapping;
 using Services.Catolog.Service;
 using Services.Catolog.Setting;
 
@@ -13,7 +14,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // auto mapping
-builder.Services.AddAutoMapper(typeof(Profile));
+builder.Services.AddAutoMapper(typeof(GeneralMapping));
 
 // appsettings.json dosyasýndan deðerleri alabilmek için yapýlan ayar. Setting klasörü içinde parçasý var.
 builder.Services.Configure<DatabaseSetting>(builder.Configuration.GetSection("DatabaseSetting"));

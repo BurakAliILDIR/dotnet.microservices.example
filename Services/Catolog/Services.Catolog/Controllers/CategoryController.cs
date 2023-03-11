@@ -7,9 +7,9 @@ using Shared.Util;
 
 namespace Services.Catolog.Controllers
 {
-    public class CategoryController : CustomBaseController
+    public class CategoryController : BaseController
     {
-        private  readonly ICategoryService _categoryService;
+        private readonly ICategoryService _categoryService;
 
         public CategoryController(ICategoryService categoryService)
         {
@@ -17,34 +17,29 @@ namespace Services.Catolog.Controllers
         }
 
         [HttpGet]
-        public async Task<Response> GetAll()
+        public async Task<IActionResult> GetAll()
         {
             var categories = await _categoryService.GetCategoryAsync();
-            
-            return Shared.Util.Response.Return(Shared.Util.Response.ResponseStatusEnum.Success, "Kurslar başarıyla getirildi.", categories);
+
+            return ReturnActionResult(categories);
         }
 
 
         [HttpGet("{id}")]
-        public async Task<Response> FindById(string id)
+        public async Task<IActionResult> FindById(string id)
         {
             var categories = await _categoryService.FindByIdAsync(id);
-            
-            return Shared.Util.Response.Return(Shared.Util.Response.ResponseStatusEnum.Success, "Kurs başarıyla getirildi.", categories);
+
+            return ReturnActionResult(categories);
         }
 
 
-        
         [HttpPost]
-        public async Task<Response> Create(CategoryDto categoryDto)
+        public async Task<IActionResult> Create(CategoryDto categoryDto)
         {
             var categories = await _categoryService.CreateCategoryAsync(categoryDto);
-            
-            return Shared.Util.Response.Return(Shared.Util.Response.ResponseStatusEnum.Success, "Kurs başarıyla getirildi.", categories);
+
+            return ReturnActionResult(categories);
         }
-
-
-        
-
     }
 }

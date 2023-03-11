@@ -7,7 +7,7 @@ using Shared.Util;
 
 namespace Services.Catolog.Controllers
 {
-    public class CourseController : CustomBaseController
+    public class CourseController : BaseController
     {
         private readonly ICourseService _courseService;
 

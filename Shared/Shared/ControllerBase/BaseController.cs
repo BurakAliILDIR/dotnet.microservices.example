@@ -8,10 +8,11 @@ using Shared.Util;
 
 namespace Shared.ControllerBase
 {
-    [ApiController]
     [Route("api/[controller]/[action]")]
-    public class CustomBaseController : Microsoft.AspNetCore.Mvc.ControllerBase
+    [ApiController]
+    public class BaseController : Microsoft.AspNetCore.Mvc.ControllerBase
     {
+        [ApiExplorerSettings(IgnoreApi = true)]
         public IActionResult ReturnActionResult(Response response)
         {
             return new ObjectResult(response)
