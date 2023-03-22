@@ -45,7 +45,7 @@ namespace Services.Discount.Service
         {
             var status =
                 await _dbConnection.ExecuteAsync(
-                    "INSERT INTO discounts (userid, rate, code) VALUES (@UserId, @Rate, @Code)", discount);
+                    "INSERT INTO discount (userid, rate, code) VALUES (@UserId, @Rate, @Code)", discount);
 
             if (status > 0)
             {
@@ -58,7 +58,7 @@ namespace Services.Discount.Service
         public async Task<Response> Update(Model.Discount discount)
         {
             var status = await _dbConnection.ExecuteAsync(
-                "UPDATE discounts SET userid=@UserId, rate=@Rate, code=@Code WHERE id=@Id", new
+                "UPDATE discount SET userid=@UserId, rate=@Rate, code=@Code WHERE id=@Id", new
                 {
                     Id = discount.Id,
                     UserId = discount.UserId,
@@ -76,7 +76,7 @@ namespace Services.Discount.Service
 
         public async Task<Response> Delete(int id)
         {
-            var status = await _dbConnection.ExecuteAsync("DELETE FROM discounts WHERE id=@Id", new { Id = id, });
+            var status = await _dbConnection.ExecuteAsync("DELETE FROM discount WHERE id=@Id", new { Id = id, });
 
             if (status > 0)
             {
@@ -89,7 +89,7 @@ namespace Services.Discount.Service
         public async Task<Response> FindByCodeAndUserId(string code, string userId)
         {
             var discount = await _dbConnection.QueryAsync<Model.Discount>(
-                "SELECT * FROM discounts where userid=@UserId, code=@Code", new
+                "SELECT * FROM discount where userid=@UserId, code=@Code", new
                 {
                     UserId = userId,
                     Code = code
