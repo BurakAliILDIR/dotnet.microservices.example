@@ -15,7 +15,7 @@ namespace Services.Discount.Service
 
         Task<Response> Delete(int id);
 
-        Task<Response> Use(string code, string userId);
+        Task<Response> FindByCodeAndUserId(string code, string userId);
 
     }
 

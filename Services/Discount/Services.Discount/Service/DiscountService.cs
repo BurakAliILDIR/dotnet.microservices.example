@@ -1,39 +1,109 @@
-﻿using Shared.Util;
+﻿using System.Data;
+using Dapper;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Npgsql;
+using Services.Discount.Model;
+using Shared.Util;
 
 namespace Services.Discount.Service
 {
-    public class DiscountService:IDiscountService
+    public class DiscountService : IDiscountService
     {
-        public Task<Response> GetAll()
+        private readonly IConfiguration _configuration;
+        private readonly IDbConnection _dbConnection;
+
+
+        public DiscountService(IConfiguration configuration)
         {
-
-
-            throw new NotImplementedException();
+            _configuration = configuration;
+            _dbConnection = new NpgsqlConnection(_configuration.GetConnectionString("PostgreSql"));
         }
 
-        public Task<Response> FindById(int id)
+        public async Task<Response> GetAll()
         {
-            throw new NotImplementedException();
+            var discounts = await _dbConnection.QueryAsync<Model.Discount>("SELECT * FROM discounts");
+
+            return Response.Return(Response.ResponseStatusEnum.Success, "İndirimler listelendi.", discounts);
         }
 
-        public Task<Response> Save(Model.Discount discount)
+        public async Task<Response> FindById(int id)
         {
-            throw new NotImplementedException();
+            var discount =
+                (await _dbConnection.QueryAsync<Model.Discount>("SELECT * FROM discounts WHERE id=@id",
+                    new { id = id }))
+                .SingleOrDefault();
+
+            if (discount is null)
+            {
+                return Response.Return(Response.ResponseStatusEnum.Error, "İndirim bulunamadı.", null, 404);
+            }
+
+            return Response.Return(Response.ResponseStatusEnum.Success, "İndirim bulundu.", discount);
         }
 
-        public Task<Response> Update(Model.Discount discount)
+        public async Task<Response> Save(Model.Discount discount)
         {
-            throw new NotImplementedException();
+            var status =
+                await _dbConnection.ExecuteAsync(
+                    "INSERT INTO discounts (userId, rate, code) VALUES (@UserId, @Rate, @Code)", discount);
+
+            if (status > 0)
+            {
+                return Response.Return(Response.ResponseStatusEnum.Success, "İndirim kayıt edildi.", null);
+            }
+
+            return Response.Return(Response.ResponseStatusEnum.Error, "İndirim kayıt edilemedi.", null, 500);
         }
 
-        public Task<Response> Delete(int id)
+        public async Task<Response> Update(Model.Discount discount)
         {
-            throw new NotImplementedException();
+            var status = await _dbConnection.ExecuteAsync(
+                "UPDATE discounts SET userid=@UserId, rate=@Rate, code=@Code WHERE id=@Id", new
+                {
+                    Id = discount.Id,
+                    UserId = discount.UserId,
+                    Rate = discount.Rate,
+                    Code = discount.Code,
+                });
+
+            if (status > 0)
+            {
+                return Response.Return(Response.ResponseStatusEnum.Success, "İndirim güncellendi.", null);
+            }
+
+            return Response.Return(Response.ResponseStatusEnum.Error, "İndirim güncellenemedi.", null, 500);
         }
 
-        public Task<Response> Use(string code, string userId)
+        public async Task<Response> Delete(int id)
         {
-            throw new NotImplementedException();
+            var status = await _dbConnection.ExecuteAsync("DELETE FROM discounts WHERE id=@Id", new { Id = id, });
+
+            if (status > 0)
+            {
+                return Response.Return(Response.ResponseStatusEnum.Success, "İndirim silindi.", null);
+            }
+
+            return Response.Return(Response.ResponseStatusEnum.Error, "İndirim silinemedi.", null, 500);
+        }
+
+        public async Task<Response> FindByCodeAndUserId(string code, string userId)
+        {
+            var discount = await _dbConnection.QueryAsync<Model.Discount>(
+                "SELECT * FROM discounts where userId=@UserId, code=@Code", new
+                {
+                    UserId = userId,
+                    Code = code
+                });
+
+
+            var hasDiscount = discount.SingleOrDefault();
+
+            if (hasDiscount is null)
+            {
+                return Response.Return(Response.ResponseStatusEnum.Error, "İndirim bulunamadı.", null, 404);
+            }
+
+            return Response.Return(Response.ResponseStatusEnum.Success, "İndirim bulundu.", hasDiscount);
         }
     }
 }
