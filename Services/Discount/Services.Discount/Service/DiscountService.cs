@@ -21,7 +21,7 @@ namespace Services.Discount.Service
 
         public async Task<Response> GetAll()
         {
-            var discounts = await _dbConnection.QueryAsync<Model.Discount>("SELECT * FROM discounts");
+            var discounts = await _dbConnection.QueryAsync<Model.Discount>("SELECT * FROM discount");
 
             return Response.Return(Response.ResponseStatusEnum.Success, "İndirimler listelendi.", discounts);
         }
@@ -29,7 +29,7 @@ namespace Services.Discount.Service
         public async Task<Response> FindById(int id)
         {
             var discount =
-                (await _dbConnection.QueryAsync<Model.Discount>("SELECT * FROM discounts WHERE id=@id",
+                (await _dbConnection.QueryAsync<Model.Discount>("SELECT * FROM discount WHERE id=@id",
                     new { id = id }))
                 .SingleOrDefault();
 
@@ -45,7 +45,7 @@ namespace Services.Discount.Service
         {
             var status =
                 await _dbConnection.ExecuteAsync(
-                    "INSERT INTO discounts (userId, rate, code) VALUES (@UserId, @Rate, @Code)", discount);
+                    "INSERT INTO discounts (userid, rate, code) VALUES (@UserId, @Rate, @Code)", discount);
 
             if (status > 0)
             {
@@ -89,7 +89,7 @@ namespace Services.Discount.Service
         public async Task<Response> FindByCodeAndUserId(string code, string userId)
         {
             var discount = await _dbConnection.QueryAsync<Model.Discount>(
-                "SELECT * FROM discounts where userId=@UserId, code=@Code", new
+                "SELECT * FROM discounts where userid=@UserId, code=@Code", new
                 {
                     UserId = userId,
                     Code = code

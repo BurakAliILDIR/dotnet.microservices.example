@@ -1,6 +1,6 @@
 ﻿namespace Services.Discount.Model
 {
-    [Dapper.Contrib.Extensions.Table("discounts")]
+    [Dapper.Contrib.Extensions.Table("discount")]
     public class Discount
     {
         public int Id { get; set; }

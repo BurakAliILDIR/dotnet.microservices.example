@@ -25,8 +25,12 @@ builder.Services.AddSingleton<RedisService>(sp =>
     return redis;
 });
 
-builder.Services.AddScoped<ISharedIdentityService, SharedIdentityService>();
 builder.Services.AddScoped<IBasketService, BasketService>();
+
+// TODO: Bunun sayesinde userId veya request ve response bilgisine eriþebiliyoruz.
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<ISharedIdentityService, SharedIdentityService>();
+
 
 var app = builder.Build();
 
