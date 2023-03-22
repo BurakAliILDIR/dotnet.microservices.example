@@ -1,6 +1,6 @@
 CREATE TABLE Discount(
 Id Serial PRIMARY KEY,
-UserId varchar(100) UNIQUE NOT NULL,
+UserId varchar(100) NOT NULL,
 Rate SMALLINT NOT NULL,
 Code varchar(30) NOT null,
 CreatedAt timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP)

@@ -89,7 +89,7 @@ namespace Services.Discount.Service
         public async Task<Response> FindByCodeAndUserId(string code, string userId)
         {
             var discount = await _dbConnection.QueryAsync<Model.Discount>(
-                "SELECT * FROM discount where userid=@UserId, code=@Code", new
+                "SELECT * FROM discount where userid=@UserId AND code=@Code", new
                 {
                     UserId = userId,
                     Code = code
