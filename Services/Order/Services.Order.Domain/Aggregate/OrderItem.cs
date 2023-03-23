@@ -14,6 +14,9 @@ namespace Services.Order.Domain.Aggregate
         public string PictureUrl { get; set; }
         public decimal Price { get; set; }
 
+        public OrderItem()
+        {
+        }
 
         public OrderItem(string courseId, string courseName, string pictureUrl, decimal price)
         {
