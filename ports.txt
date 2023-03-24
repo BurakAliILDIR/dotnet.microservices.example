@@ -5,3 +5,4 @@ Services
 	-discount API: 5014
 	-order API: 5015
 	-payment API: 5016
+Gateway : 5000
