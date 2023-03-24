@@ -11,7 +11,11 @@
       ],
       "UpstreamPathTemplate": "/services/catolog/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "UpstreamSchema": "https"
+      "UpstreamSchema": "https",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "GatewayAuthSchema",
+        "AllowedScopes": [/* TODO: JWT nin içindeki scopelardan biri gelecek. */]
+      }
     },
     {
       "DownstreamPathTemplate": "/api/{everything}",

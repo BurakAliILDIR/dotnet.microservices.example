@@ -3,15 +3,21 @@ using Ocelot.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
- builder.Configuration.AddJsonFile($"configuration.{Host.CreateApplicationBuilder().Environment.EnvironmentName.ToLower()}.json"); // hatalý. aþaðýdaki çalýþýyor ama dinamik hale getirilmeli.
-builder.Configuration.AddJsonFile("ocelot.development.json");
+ builder.Configuration.AddJsonFile($"ocelot.{builder.Environment.EnvironmentName}.json");
 
 builder.Services.AddOcelot();
 
+builder.Services.AddAuthentication().AddJwtBearer("GatewayAuthSchema", option =>
+{
+    option.Authority = "test";
+    option.Audience = "test";
+    option.RequireHttpsMetadata = false;
+});
+
+
 var app = builder.Build();
 
- app.UseOcelot();
-
+app.UseOcelot();
 
 
 app.Run();
