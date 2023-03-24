@@ -29,7 +29,6 @@ namespace Services.Order.API.Controllers
                 UserId = userId
             });
 
-
             return ReturnActionResult(response);
         }
 
@@ -37,6 +36,10 @@ namespace Services.Order.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateOrder(CreateOrderCommand createOrderCommand)
         {
+            var userId = _identityService.GetUserId;
+
+            createOrderCommand.UserId = userId;
+
             var response = await _mediator.Send(createOrderCommand);
 
             return ReturnActionResult(response);

@@ -46,6 +46,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Order.Domain.Core"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Order.Infrastructure", "Services\Order\Services.Order.Infrastructure\Services.Order.Infrastructure.csproj", "{0C47C691-7196-4B72-A870-73D67B01B426}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Payment", "Payment", "{23291772-912F-4A5B-BEB0-874A105FFFB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Payment", "Services\Payment\Services.Payment\Services.Payment.csproj", "{AD47068E-B893-4429-BC6E-66470FB38672}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -96,6 +100,10 @@ Global
 		{0C47C691-7196-4B72-A870-73D67B01B426}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C47C691-7196-4B72-A870-73D67B01B426}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C47C691-7196-4B72-A870-73D67B01B426}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD47068E-B893-4429-BC6E-66470FB38672}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD47068E-B893-4429-BC6E-66470FB38672}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD47068E-B893-4429-BC6E-66470FB38672}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD47068E-B893-4429-BC6E-66470FB38672}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -118,6 +126,8 @@ Global
 		{51A112A6-0911-4C80-B70E-2ED44B4C3DCB} = {31214041-1B52-4E75-9409-66970B5C52CF}
 		{22746701-C3E7-4777-B5B7-BCF20FBCCD52} = {31214041-1B52-4E75-9409-66970B5C52CF}
 		{0C47C691-7196-4B72-A870-73D67B01B426} = {31214041-1B52-4E75-9409-66970B5C52CF}
+		{23291772-912F-4A5B-BEB0-874A105FFFB5} = {4C7D440D-B491-40DC-8702-3E7F4F860878}
+		{AD47068E-B893-4429-BC6E-66470FB38672} = {23291772-912F-4A5B-BEB0-874A105FFFB5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9A8CB5A7-E7CF-423F-B7FE-4072EA2D4C79}

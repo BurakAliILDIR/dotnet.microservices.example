@@ -4,3 +4,4 @@ Services
 	-basket API: 5013
 	-discount API: 5014
 	-order API: 5015
+	-payment API: 5016
