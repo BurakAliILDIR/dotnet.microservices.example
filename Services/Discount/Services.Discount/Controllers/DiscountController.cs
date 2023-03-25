@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Services.Discount.Service;
 using Shared.ControllerBase;
 using Shared.Service;
+using System.Data;
 
 namespace Services.Discount.Controllers
 {
+    [Authorize(Roles = "User")]
     public class DiscountController : BaseController
     {
         private readonly IDiscountService _discountService;

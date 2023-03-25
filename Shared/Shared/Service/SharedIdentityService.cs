@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -12,14 +13,16 @@ namespace Shared.Service
         // TODO : Önemli.
         private IHttpContextAccessor _httpContextAccessor;
 
-        // public string GetUserId => _httpContextAccessor.HttpContext.User.Claims.Where(x => x.Type == "sub").FirstOrDefault().Value;
+        public SharedIdentityService(IHttpContextAccessor httpContextAccessor)
+        {
+            _httpContextAccessor = httpContextAccessor;
+        }
 
         public string GetUserId
         {
             get
             {
-                var user = _httpContextAccessor.HttpContext.User;
-                return _httpContextAccessor.HttpContext.User.FindFirst("sub").Value;
+                return _httpContextAccessor.HttpContext!.User!.FindFirst(ClaimTypes.NameIdentifier)!.Value!;
             }
         }
     }

@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Services.Order.Application.Command;
@@ -8,6 +9,7 @@ using Shared.Service;
 
 namespace Services.Order.API.Controllers
 {
+    [Authorize(Roles = "User")]
     public class OrderController : BaseController
     {
         private readonly IMediator _mediator;

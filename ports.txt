@@ -1,8 +1,10 @@
 Services
+	-auth API: 5010
 	-catolog API: 5011
 	-photo API: 5012
 	-basket API: 5013
 	-discount API: 5014
 	-order API: 5015
 	-payment API: 5016
+
 Gateway : 5000

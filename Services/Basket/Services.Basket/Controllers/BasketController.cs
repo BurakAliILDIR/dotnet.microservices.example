@@ -8,6 +8,7 @@ using Shared.Service;
 
 namespace Services.Basket.Controllers
 {
+    [Authorize(Roles = "Admin,User")]
     public class BasketController : BaseController
     {
         private readonly IBasketService _basketService;
@@ -19,7 +20,7 @@ namespace Services.Basket.Controllers
             _sharedIdentityService = sharedIdentityService;
         }
 
-        [HttpGet, Authorize]
+        [HttpGet]
         public async Task<IActionResult> GetBasket()
         {
             var userId = _sharedIdentityService.GetUserId;
