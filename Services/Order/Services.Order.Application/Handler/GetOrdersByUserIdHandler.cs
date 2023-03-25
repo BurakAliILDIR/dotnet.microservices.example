@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Services.Order.Application.Dto;
@@ -16,7 +17,6 @@ namespace Services.Order.Application.Handler
     public class GetOrdersByUserIdHandler : IRequestHandler<GetOrdersByUserIdQuery, Response>
     {
         private readonly OrderDbContext _orderDbContext;
-
 
         public GetOrdersByUserIdHandler(OrderDbContext orderDbContext)
         {

@@ -28,9 +28,11 @@ namespace Services.Auth.Controllers
 
 
         [HttpPost]
-        public IActionResult Login([FromBody] UserLoginDto request)
+        public async Task<IActionResult> LoginAsync([FromBody] UserLoginDto request)
         {
-            return Ok();
+            var response = await _authService.Login(request);
+
+            return ReturnActionResult(response);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Services.Basket.Dto;
 using Services.Basket.Service;
@@ -18,7 +19,7 @@ namespace Services.Basket.Controllers
             _sharedIdentityService = sharedIdentityService;
         }
 
-        [HttpGet]
+        [HttpGet, Authorize]
         public async Task<IActionResult> GetBasket()
         {
             var userId = _sharedIdentityService.GetUserId;
@@ -30,6 +31,10 @@ namespace Services.Basket.Controllers
         [HttpPost]
         public async Task<IActionResult> SetBasket(BasketDto basketDto)
         {
+            var userId = _sharedIdentityService.GetUserId;
+
+            basketDto.UserId = userId;
+
             var response = await _basketService.SaveOrUpdate(basketDto);
 
             return ReturnActionResult(response);

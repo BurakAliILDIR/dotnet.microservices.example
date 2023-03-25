@@ -7,5 +7,6 @@ namespace Services.Auth.Service
     public interface IAuthService
     {
         Task<Response> Register(UserRegisterDto request);
+        Task<Response> Login(UserLoginDto request);
     }
 }
