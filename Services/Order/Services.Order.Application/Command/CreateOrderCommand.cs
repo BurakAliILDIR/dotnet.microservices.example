@@ -12,7 +12,7 @@ namespace Services.Order.Application.Command
     public class CreateOrderCommand : IRequest<Response>
     {
         public string UserId { get; set; }
-        public List<OrderItemDto> OrderItemDtos { get; set; }
-        public AddressDto AddressDto { get; set; }
+        public List<OrderItemDto> OrderItems { get; set; }
+        public AddressDto Address { get; set; }
     }
 }

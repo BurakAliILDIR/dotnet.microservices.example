@@ -24,14 +24,16 @@ namespace Services.Order.Application.Handler
 
         public async Task<Response> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
         {
-            var newAddress = new Address(request.AddressDto.Province, request.AddressDto.District,
-                request.AddressDto.Street, request.AddressDto.ZipCode, request.AddressDto.Line);
+            var newAddress = new Address(request.Address.Province, request.Address.District,
+                request.Address.Street, request.Address.ZipCode, request.Address.Line);
 
             Domain.Aggregate.Order newOrder = new Domain.Aggregate.Order(request.UserId, newAddress);
 
-            var orderItems = ObjectMapper.Mapper.Map<List<OrderItem>>(request.OrderItemDtos);
+            List<OrderItem> orderItems = ObjectMapper.Mapper.Map<List<OrderItem>>(request.OrderItems);
 
-            orderItems.ForEach(x => { newOrder.OrderItems.Append(x); });
+            newOrder.OrderItems = orderItems;
+
+             orderItems.ForEach(x => { newOrder.OrderItems.Append(x); });
 
             await _orderDbContext.AddAsync(newOrder);
 
