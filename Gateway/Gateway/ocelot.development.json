@@ -27,7 +27,7 @@
       "UpstreamSchema": "https",
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "GatewayAuthSchema",
-        "AllowedScopes": [/* TODO: JWT nin içindeki scopelardan biri gelecek. */]
+        "AllowedScopes": [ /* TODO: JWT nin içindeki scopelardan biri gelecek. */ ]
       }
     },
     {
@@ -54,7 +54,11 @@
       ],
       "UpstreamPathTemplate": "/services/basket/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "UpstreamSchema": "https"
+      "UpstreamSchema": "https",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "GatewayAuthSchema",
+        "AllowedScopes": [ /* TODO: JWT nin içindeki scopelardan biri gelecek. */ ]
+      }
     },
     {
       "DownstreamPathTemplate": "/api/{everything}",
@@ -67,7 +71,11 @@
       ],
       "UpstreamPathTemplate": "/services/discount/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "UpstreamSchema": "https"
+      "UpstreamSchema": "https",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "GatewayAuthSchema",
+        "AllowedScopes": [ /* TODO: JWT nin içindeki scopelardan biri gelecek. */ ]
+      }
     },
     {
       "DownstreamPathTemplate": "/api/{everything}",
@@ -80,7 +88,11 @@
       ],
       "UpstreamPathTemplate": "/services/order/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "UpstreamSchema": "https"
+      "UpstreamSchema": "https",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "GatewayAuthSchema",
+        "AllowedScopes": [ /* TODO: JWT nin içindeki scopelardan biri gelecek. */ ]
+      }
     },
     {
       "DownstreamPathTemplate": "/api/{everything}",
@@ -93,7 +105,11 @@
       ],
       "UpstreamPathTemplate": "/services/payment/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "UpstreamSchema": "https"
+      "UpstreamSchema": "https",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "GatewayAuthSchema",
+        "AllowedScopes": [ /* TODO: JWT nin içindeki scopelardan biri gelecek. */ ]
+      }
     }
   ],
   "GlobalConfiguration": {
