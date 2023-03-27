@@ -1,8 +1,10 @@
 using System.Text;
+using MassTransit;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Services.Order.Application.Consumer;
 using Services.Order.Application.Handler;
 using Services.Order.Infrastructure;
 using Shared.Service;
@@ -52,6 +54,25 @@ builder.Services.AddAuthentication().AddJwtBearer(options =>
             Encoding.UTF8.GetBytes(builder.Configuration.GetSection("AppSettings:JwtToken")
                 .Value!))
     };
+});
+
+
+// mass transit
+builder.Services.AddMassTransit(x =>
+{
+    x.AddConsumer<CreateOrderMessageCommandConsumer>(); // Consumer eklendi.
+
+    x.UsingRabbitMq((context, config) =>
+    {
+        config.Host(builder.Configuration["RabbitMQ:Url"], "/", host =>
+        {
+            host.Username(builder.Configuration["RabbitMQ:Username"]);
+            host.Password(builder.Configuration["RabbitMQ:Password"]);
+        });
+
+        config.ReceiveEndpoint("create-order-service",
+            e => e.ConfigureConsumer<CreateOrderMessageCommandConsumer>(context));
+    });
 });
 
 

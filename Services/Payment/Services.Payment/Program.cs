@@ -1,6 +1,8 @@
 using System.Text;
+using MassTransit;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Shared.Service;
 using Swashbuckle.AspNetCore.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,6 +37,24 @@ builder.Services.AddAuthentication().AddJwtBearer(options =>
                 .Value!))
     };
 });
+
+// mass transit
+builder.Services.AddMassTransit(x =>
+{
+    x.UsingRabbitMq((context, config) =>
+    {
+        config.Host(builder.Configuration["RabbitMQ:Url"], "/", host =>
+        {
+            host.Username(builder.Configuration["RabbitMQ:Username"]);
+            host.Password(builder.Configuration["RabbitMQ:Password"]);
+        });
+    });
+});
+
+
+// services
+builder.Services.AddScoped<ISharedIdentityService, SharedIdentityService>();
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 

@@ -24,35 +24,35 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services.Auth", "Services\A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Photo", "Photo", "{92481237-FF3B-49BE-A0B5-982D6DB109B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Photo", "Services\Photo\Services.Photo\Services.Photo.csproj", "{3463A739-30A7-436C-AA59-4E77B9E0F051}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services.Photo", "Services\Photo\Services.Photo\Services.Photo.csproj", "{3463A739-30A7-436C-AA59-4E77B9E0F051}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{C02C39F3-2541-4820-AA08-D0FED8E8F85A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Basket", "Services\Basket\Services.Basket\Services.Basket.csproj", "{C4EA5B09-1724-4E73-B3A2-432E4A674B45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services.Basket", "Services\Basket\Services.Basket\Services.Basket.csproj", "{C4EA5B09-1724-4E73-B3A2-432E4A674B45}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Discount", "Discount", "{E631E7A0-E831-4C11-A70A-879B1BF4AECB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Discount", "Services\Discount\Services.Discount\Services.Discount.csproj", "{843E5A78-4CAE-424D-9701-E409B7AE895E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services.Discount", "Services\Discount\Services.Discount\Services.Discount.csproj", "{843E5A78-4CAE-424D-9701-E409B7AE895E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Order", "Order", "{31214041-1B52-4E75-9409-66970B5C52CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Order.API", "Services\Order\Services.Order.API\Services.Order.API.csproj", "{632E6708-926B-4752-9180-84B0B49AE25D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services.Order.API", "Services\Order\Services.Order.API\Services.Order.API.csproj", "{632E6708-926B-4752-9180-84B0B49AE25D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Order.Application", "Services\Order\Services.Order.Application\Services.Order.Application.csproj", "{73554771-8B96-492D-BE69-992031F603C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services.Order.Application", "Services\Order\Services.Order.Application\Services.Order.Application.csproj", "{73554771-8B96-492D-BE69-992031F603C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Order.Domain", "Services\Order\Services.Order.Domain\Services.Order.Domain.csproj", "{51A112A6-0911-4C80-B70E-2ED44B4C3DCB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services.Order.Domain", "Services\Order\Services.Order.Domain\Services.Order.Domain.csproj", "{51A112A6-0911-4C80-B70E-2ED44B4C3DCB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Order.Domain.Core", "Services\Order\Services.Order.Domain.Core\Services.Order.Domain.Core.csproj", "{22746701-C3E7-4777-B5B7-BCF20FBCCD52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services.Order.Domain.Core", "Services\Order\Services.Order.Domain.Core\Services.Order.Domain.Core.csproj", "{22746701-C3E7-4777-B5B7-BCF20FBCCD52}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Order.Infrastructure", "Services\Order\Services.Order.Infrastructure\Services.Order.Infrastructure.csproj", "{0C47C691-7196-4B72-A870-73D67B01B426}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services.Order.Infrastructure", "Services\Order\Services.Order.Infrastructure\Services.Order.Infrastructure.csproj", "{0C47C691-7196-4B72-A870-73D67B01B426}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Payment", "Payment", "{23291772-912F-4A5B-BEB0-874A105FFFB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Payment", "Services\Payment\Services.Payment\Services.Payment.csproj", "{AD47068E-B893-4429-BC6E-66470FB38672}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services.Payment", "Services\Payment\Services.Payment\Services.Payment.csproj", "{AD47068E-B893-4429-BC6E-66470FB38672}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateway", "Gateway", "{DC4B2737-346C-42A1-A219-0CFD71BB6A1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateway", "Gateway\Gateway\Gateway.csproj", "{7ECB2559-658B-4EEE-AFD4-29A68D07A1C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateway", "Gateway\Gateway\Gateway.csproj", "{7ECB2559-658B-4EEE-AFD4-29A68D07A1C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
