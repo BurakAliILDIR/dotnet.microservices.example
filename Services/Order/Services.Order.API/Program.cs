@@ -61,6 +61,7 @@ builder.Services.AddAuthentication().AddJwtBearer(options =>
 builder.Services.AddMassTransit(x =>
 {
     x.AddConsumer<CreateOrderMessageCommandConsumer>(); // Consumer eklendi.
+    x.AddConsumer<CourseNameChangedEventConsumer>(); // Consumer eklendi.
 
     x.UsingRabbitMq((context, config) =>
     {
@@ -70,8 +71,9 @@ builder.Services.AddMassTransit(x =>
             host.Password(builder.Configuration["RabbitMQ:Password"]);
         });
 
-        config.ReceiveEndpoint("create-order-service",
-            e => e.ConfigureConsumer<CreateOrderMessageCommandConsumer>(context));
+        config.ReceiveEndpoint("create-order-service", e => e.ConfigureConsumer<CreateOrderMessageCommandConsumer>(context));
+
+        config.ReceiveEndpoint("course-name-changed-event-order-service", e => e.ConfigureConsumer<CourseNameChangedEventConsumer>(context));
     });
 });
 

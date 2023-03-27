@@ -1,4 +1,5 @@
 using AutoMapper;
+using MassTransit;
 using Microsoft.Extensions.Options;
 using Services.Catolog.Mapping;
 using Services.Catolog.Service;
@@ -24,6 +25,20 @@ builder.Services.AddSingleton<IDatabaseSetting>(x => x.GetRequiredService<IOptio
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 // course service
 builder.Services.AddScoped<ICourseService, CourseService>();
+
+// mass transit
+builder.Services.AddMassTransit(x =>
+{
+    x.UsingRabbitMq((context, config) =>
+    {
+        config.Host(builder.Configuration["RabbitMQ:Url"], "/", host =>
+        {
+            host.Username(builder.Configuration["RabbitMQ:Username"]);
+            host.Password(builder.Configuration["RabbitMQ:Password"]);
+        });
+    });
+});
+
 
 var app = builder.Build();
 

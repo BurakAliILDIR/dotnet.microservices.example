@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
+using MassTransit;
 using MongoDB.Driver;
 using Services.Catolog.Dto.Course;
 using Services.Catolog.Model;
 using Services.Catolog.Setting;
-using Shared.Util;
+using Shared.Message;
+using Response = Shared.Util.Response;
 
 namespace Services.Catolog.Service
 {
@@ -11,12 +13,13 @@ namespace Services.Catolog.Service
     {
         private readonly IMongoCollection<Course> _courseCollection;
         private readonly IMongoCollection<Category> _categoryCollection;
-
         private readonly IMapper _mapper;
+        private readonly IPublishEndpoint _publishEndpoint;
 
-        public CourseService(IMapper mapper, IDatabaseSetting databaseSetting)
+        public CourseService(IMapper mapper, IDatabaseSetting databaseSetting, IPublishEndpoint publishEndpoint)
         {
             _mapper = mapper;
+            _publishEndpoint = publishEndpoint;
 
             MongoClient client = new MongoClient(databaseSetting.ConnectionString);
 
@@ -112,6 +115,14 @@ namespace Services.Catolog.Service
             {
                 return Response.Return(Response.ResponseStatusEnum.Warning, "Kurs bulunamadı.", null);
             }
+
+            // TODO : Publish event
+            await _publishEndpoint.Publish<CourseNameChangedEvent>(new CourseNameChangedEvent()
+            {
+                CourseId = result.Id,
+                CourseUpdateName = result.Name
+            });
+
 
             return Response.Return(Response.ResponseStatusEnum.Success, "Kurs başarıyla güncellendi.", null);
         }

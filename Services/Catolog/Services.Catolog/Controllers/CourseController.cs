@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using MassTransit;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Services.Catolog.Dto.Course;
 using Services.Catolog.Service;
@@ -10,6 +11,7 @@ namespace Services.Catolog.Controllers
     public class CourseController : BaseController
     {
         private readonly ICourseService _courseService;
+
 
         public CourseController(ICourseService courseService)
         {
@@ -23,7 +25,6 @@ namespace Services.Catolog.Controllers
 
             return ReturnActionResult(response);
         }
-
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(string id)
