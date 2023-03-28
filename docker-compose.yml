@@ -13,7 +13,16 @@ services:
     image: mcr.microsoft.com/mssql/server
   rabbitmq:
     image: rabbitmq:3-management
-
+  catolog_api:
+    image: catolog_api_image
+    build:
+      context: .
+      dockerfile: Services/Catolog/Services.Catolog/Dockerfile
+  auth_api:
+    image: auth_api_image
+    build:
+      context: .
+      dockerfile: Services/Auth/Services.Auth/Dockerfile
 volumes:
   catologdb_volume:
   discountdb_volume:

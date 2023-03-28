@@ -30,7 +30,7 @@ services:
     ports:
       - "1444:1433"
     volumes:
-      - orderdb_volume:/var/opt/mssql/data
+      - orderdb_volume:/var/opt/mssql
     environment:
       - ACCEPT_EULA=admin
       - MSSQL_SA_PASSWORD=123123123
@@ -40,7 +40,7 @@ services:
     ports:
       - "1443:1433"
     volumes:
-      - identitydb_volume:/var/opt/mssql/data
+      - identitydb_volume:/var/opt/mssql
     environment:
       - ACCEPT_EULA=admin
       - MSSQL_SA_PASSWORD=123123123
@@ -50,3 +50,23 @@ services:
     ports:
       - "5672:5672"
       - "15672:15672" 
+  #catolog_api:
+  #  image: catolog_api
+  #  environment:
+  #    - ASPNETCORE_ENVIROMENT=Development
+  #    - RabbitMQ:Url=rabbitmq
+  #    - DatabaseSetting:ConnectionString=mongodb://catologdb:27017
+  #  ports:
+  #    - "5011:80"
+  #  depends_on:
+  #    - catologdb
+  #auth_api:
+  #  container_name: auth_api
+  #  environment:
+  #    - ASPNETCORE_ENVIROMENT=Development
+  #    - ConnectionStrings:SqlServer="Server=identitydb,1444; Database=authdb; User=sa; Password=123123123; TrustServerCertificate=True"
+  #  ports:
+  #    - "5010:80"
+  #  depends_on:
+  #    - identitydb
+        
